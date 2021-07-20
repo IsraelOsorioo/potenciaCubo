@@ -13,21 +13,21 @@ public class CuboServidor {
         boolean fin = false;
         	try {
         		servidor = new ServerSocket(6000);
-        		System.out.println("Servidor escuchando en el puerto 6000");
+        		System.out.println("Servidor escuchando en el puerto 6000...");
         
         		Socket socketManejoCliente = servidor.accept();
         		DataInputStream in= new DataInputStream(socketManejoCliente.getInputStream());
         		DataOutputStream out = new DataOutputStream(socketManejoCliente.getOutputStream());
         do 
         {
-        Double mensaje =0d;
-        mensaje = in.readDouble();
-        System.out.println("El servidor recibio del cliente: "+ mensaje);
+        Double numero =0d;
+        numero = in.readDouble();
+        System.out.println("El servidor recibio del cliente: "+ numero);
         
-        out.writeDouble(mensaje*mensaje*mensaje);
-        System.out.println("Se envio el mensaje: " + mensaje*mensaje*mensaje);
+        out.writeDouble(numero*numero*numero);
+        System.out.println("Se envio el numero: " + numero*numero*numero);
         
-        	if (mensaje.equals(".")) 
+        	if (numero.equals(".")) 
         	{
         		fin= true;
         		System.out.println("Servidor apagado: ");

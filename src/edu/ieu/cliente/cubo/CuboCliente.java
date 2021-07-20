@@ -17,25 +17,25 @@ public class CuboCliente {
 	public void conectar() 
 	{
 		byte[]mensaje_bytes =  new byte[256];
-		Double mensaje = 0d;
+		Double numero = 0d;
 		
 		try {
 			socket = new Socket ("localhost",6000);
 			in = new DataInputStream(socket.getInputStream());
 			out = new DataOutputStream(socket.getOutputStream());
-			System.out.println("El cliente se conectado al servidor en el puerto 6000...");
+			System.out.println("Cliente iniciado");
 			do 
 			{
-				System.out.println("Escribe un mensaje para el servidor: ");
-				mensaje =Double.parseDouble(entradaTeclado.readLine()) ;
+				System.out.println("Escribe un numero para el servidor: ");
+				numero =Double.parseDouble(entradaTeclado.readLine()) ;
 				
-				out.writeDouble(mensaje);
-				System.out.println("Mensaje enviado: " + mensaje);
+				out.writeDouble(numero);
+				System.out.println("Numero enviado: " + numero);
 				
 				Double respuesta = in.readDouble();
 				System.out.println("La potencia al cubo es: "+ respuesta);
 				
-			}while(!mensaje.equals(".") );
+			}while(!numero.equals(".") );
 			
 			in.close();
 			out.close();
